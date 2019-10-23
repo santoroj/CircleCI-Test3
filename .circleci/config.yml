@@ -50,12 +50,12 @@ workflows:
   version: 2
   sample_pipeline:
     jobs:
-/*      - linting */
+#*      - linting */
       - unit_test
       - build_artifact:
           requires:
             - unit_test
-/*            - linting */
+#*            - linting */
       - deploy_to_dev:
           requires:
             - build_artifact
