@@ -1,6 +1,8 @@
 ---
 version: 2
+
 jobs:
+
   unit_test:
     docker:
       - image: busybox:latest
@@ -8,6 +10,7 @@ jobs:
       - run:
         name: Unit Test
         command: echo "Going to run Unit Test"
+
     linting:
       docker:
         - image: busybox:latest
@@ -15,6 +18,7 @@ jobs:
         - run:
           name: Lint Test
           command: echo "Going to run Lint Test"
+
     build_artifact:
       docker:
         - image: busybox:latest
@@ -30,6 +34,7 @@ jobs:
         - run:
           name: Deploy to Dev
           command: echo "Going to deploy to dev"
+
     deploy_to_qa:
       docker:
         - image: busybox:latest
@@ -45,12 +50,12 @@ workflows:
   version: 2
   sample_pipeline:
     jobs:
-      - linting
+/*      - linting */
       - unit_test
       - build_artifact:
           requires:
             - unit_test
-            - linting
+/*            - linting */
       - deploy_to_dev:
           requires:
             - build_artifact
